@@ -1,0 +1,2074 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device=width, initial-scale=1.0">
+    <title>CineBites - Enterprise In-Seat F&B Ordering</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .variant-box {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 10px;
+            padding-left: 12px;
+            border-left: 2px solid #00e5ff;
+            width: 100%;
+        }
+        .item-row {
+            flex-direction: column;
+            align-items: flex-start;
+            cursor: pointer;
+        }
+        .item-main-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section (Centered Logo & Brand, No Right Badge) -->
+    <header class="header">
+        <div class="header-container">
+            <!-- Centered Logo, Brand Name & Tagline -->
+            <div class="brand-box-centered">
+                <!-- Glowing Logo Emblem with Popcorn Tub -->
+                <div class="logo-emblem">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 8l2 13h14l2-13H3z"></path>
+                        <path d="M9 8v13"></path>
+                        <path d="M15 8v13"></path>
+                        <path d="M7 5c0-1.1.9-2 2-2s2 .9 2 2"></path>
+                        <path d="M11 4c0-1.1.9-2 2-2s2 .9 2 2"></path>
+                        <path d="M13 5c0-1.1.9-2 2-2s2 .9 2 2"></path>
+                    </svg>
+                    <span class="logo-sparkle"></span>
+                </div>
+                
+                <!-- Title & Tagline Group -->
+                <div class="title-wrapper">
+                    <h1><span class="cine-part">Cine</span><span class="bites-part">Bites</span></h1>
+                    <p>Premium In-Seat Cinema Food & Beverage Ordering</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container">
+
+        <!-- Quick Category Bar -->
+        <div class="quick-category-bar">
+            <a href="#regular" class="cat-chip">⭐ Regular</a>
+            <a href="#beverages" class="cat-chip">🥤 Cold Bev</a>
+            <a href="#hot-bev" class="cat-chip">☕ Hot Bev</a>
+            <a href="#fresh-live" class="cat-chip">🍟 Fresh & Live</a>
+            <a href="#eatables" class="cat-chip">🥪 Eatables</a>
+            <a href="#combos" class="cat-chip">🍱 Combos</a>
+        </div>
+
+        <!-- Instant Search Bar -->
+        <div class="search-box-container">
+            <input type="text" id="searchInput" placeholder="🔍 Search items (e.g. Popcorn, Burger, Coke)..." onkeyup="searchItems()">
+        </div>
+
+        <div class="cinema-menu-container">
+    
+    <!-- Left Small Box -->
+    <div class="side-compact-box" id="leftSlider">
+        <img src="samosa.jpeg" class="active" alt="Menu Item">
+        <img src="nachos.jpeg" alt="Menu Item">
+        <img src="vegburger.jpeg" alt="Menu Item">
+        <img src="Cheese.jpeg" alt="Menu Item">
+    </div>
+
+    <!-- Original Cinema Menu with Taste Tagline -->
+    <div class="menu-section" id="menuFeed">
+        <h2>Official Cinema Menu</h2>
+        <div class="taste-tagline">
+            <span class="side-leaf">🌱</span>
+            <span class="side-line"></span>
+            <span class="taste-text">Taste the Freshness in Every Bite!</span>
+            <span class="side-line"></span>
+            <span class="side-leaf">🌱</span>
+        </div>
+    </div>
+
+    <!-- Right Small Box (Hidden on Mobile) -->
+    <div class="side-compact-box" id="rightSlider">
+        <img src="nachos.jpeg" class="active" alt="Menu Item">
+        <img src="samosa.jpeg" alt="Menu Item">
+        <img src="Salted.jpeg" alt="Menu Item">
+        <img src="mirinda650.jpeg" alt="Menu Item">
+    </div>
+
+</div>
+
+        <!-- 1. REGULAR & BEST SELLERS SECTION (With Amazon style dropdowns as requested) -->
+            <div class="category-block" id="regular">
+                <h3 class="cat-heading">⭐ Regular & Best Sellers</h3>
+                <div class="items-list">
+                    
+                    
+                    <!-- Family Tub -->
+                    <!-- Family Tub Popcorn Card -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src="FSalted.jpeg" alt="Family Tub Popcorn" style="width: 100%; height: 100%; object-fit: fill;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+    
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Family Tub Popcorn (Caramel) ▾</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Sharing size (Tap flavor below to switch)</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 400</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;" onclick="event.stopPropagation()">Add +</button>
+
+    <!-- Hidden Flavor Variant Boxes -->
+    <div class="variant-box" onclick="event.stopPropagation()">
+        <p style="color: #00e5ff; font-size: 12px; margin: 0 0 8px 0; font-weight: 600;">Select Flavor:</p>
+        
+        <div class="flavor-scroll-container" style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px;">
+            
+            <!-- Caramel Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'Fcaramel.jpeg', 'Family Tub Popcorn (Caramel)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="Fcaramel.jpeg" alt="Caramel" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Caramel</div>
+            </div>
+
+            <!-- Cheese Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'FCheese.jpeg', 'Family Tub Popcorn (Cheese)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="FCheese.jpeg" alt="Cheese" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Cheese</div>
+            </div>
+
+            <!-- Masala Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'FMasala.jpeg', 'Family Tub Popcorn (Masala)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="FMasala.jpeg" alt="Masala" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Masala</div>
+            </div>
+
+            <!-- Salted Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'FSalted.jpeg', 'Family Tub Popcorn (Salted)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="FSalted.jpeg" alt="Salted" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Salted</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+                    <!-- Large Tub Popcorn Card (Using the same common format) -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src="Salted.jpeg" alt="Large Tub Popcorn" style="width: 100%; height: 100%; object-fit: fill;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Large Tub Popcorn (Caramel) ▾</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Sharing size (Tap flavor below to switch)</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 280</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;" onclick="event.stopPropagation()">Add +</button>
+
+    <!-- Hidden Flavor Variant Boxes -->
+    <div class="variant-box" onclick="event.stopPropagation()">
+        <p style="color: #00e5ff; font-size: 12px; margin: 0 0 8px 0; font-weight: 600;">Select Flavor:</p>
+        
+        <div class="flavor-scroll-container" style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px;">
+            
+            <!-- Caramel Thumbnail Box -->
+            <div class="flavor-thumb active" onclick="selectFlavorCard(this, 'caramel.jpeg', 'Large Tub Popcorn (Caramel)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="caramel.jpeg" alt="Caramel" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Caramel</div>
+            </div>
+
+            <!-- Cheese Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'cheese.jpeg', 'Large Tub Popcorn (Cheese)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="cheese.jpeg" alt="Cheese" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Cheese</div>
+            </div>
+
+            <!-- Masala Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'masala.jpeg', 'Large Tub Popcorn (Masala)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="masala.jpeg" alt="Masala" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Masala</div>
+            </div>
+
+            <!-- Salted Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'salted.jpeg', 'Large Tub Popcorn (Salted)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="salted.jpeg" alt="Salted" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Salted</div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+                    <!-- Medium Tub Popcorn Card -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src="MSalted.jpeg" alt="Medium Tub Popcorn" style="width: 100%; height: 100%; object-fit: fill;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Medium Tub Popcorn (Caramel) ▾</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Regular size (Tap flavor below to switch)</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 230</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;" onclick="event.stopPropagation()">Add +</button>
+
+    <!-- Hidden Flavor Variant Boxes -->
+    <div class="variant-box" onclick="event.stopPropagation()">
+        <p style="color: #00e5ff; font-size: 12px; margin: 0 0 8px 0; font-weight: 600;">Select Flavor:</p>
+        
+        <div class="flavor-scroll-container" style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px;">
+            
+            <!-- Caramel Thumbnail Box -->
+            <div class="flavor-thumb active" onclick="selectFlavorCard(this, 'Mcaramel.jpeg', 'Medium Tub Popcorn (Caramel)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="Mcaramel.jpeg" alt="Caramel" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Caramel</div>
+            </div>
+
+            <!-- Cheese Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'Mcheese.jpeg', 'Medium Tub Popcorn (Cheese)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="Mcheese.jpeg" alt="Cheese" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Cheese</div>
+            </div>
+
+            <!-- Masala Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'Mmasala.jpeg', 'Medium Tub Popcorn (Masala)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="Mmasala.jpeg" alt="Masala" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Masala</div>
+            </div>
+
+            <!-- Salted Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'MSalted.jpeg', 'Medium Tub Popcorn (Salted)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="Msalted.jpeg" alt="Salted" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Salted</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+                    <!-- Regular Tub Popcorn Card -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src="RSalted.jpeg" alt="Regular Tub Popcorn" style="width: 100%; height: 100%; object-fit: fill;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Regular Tub Popcorn (Caramel) ▾</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Standard size (Tap flavor below to switch)</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 150</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;" onclick="event.stopPropagation()">Add +</button>
+
+    <!-- Hidden Flavor Variant Boxes -->
+    <div class="variant-box" onclick="event.stopPropagation()">
+        <p style="color: #00e5ff; font-size: 12px; margin: 0 0 8px 0; font-weight: 600;">Select Flavor:</p>
+        
+        <div class="flavor-scroll-container" style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px;">
+            
+            <!-- Caramel Thumbnail Box -->
+            <div class="flavor-thumb active" onclick="selectFlavorCard(this, 'Rcaramel.jpeg', 'Regular Tub Popcorn (Caramel)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="Rcaramel.jpeg" alt="Caramel" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Caramel</div>
+            </div>
+
+            <!-- Cheese Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'Rcheese.jpeg', 'Regular Tub Popcorn (Cheese)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="Rcheese.jpeg" alt="Cheese" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Cheese</div>
+            </div>
+
+            <!-- Masala Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'Rmasala.jpeg', 'Regular Tub Popcorn (Masala)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="Rmasala.jpeg" alt="Masala" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Masala</div>
+            </div>
+
+            <!-- Salted Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'RSalted.jpeg', 'Regular Tub Popcorn (Salted)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="Rsalted.jpeg" alt="Salted" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Salted</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+                    <!-- Samosa -->
+        <div class="item-row">
+                <!-- Image Box -->
+        <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+            <img src="samosa.jpeg" alt="Samosa" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+        </div>
+
+        <!-- Item Info -->
+        <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+            <h4 style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Samosa (2PCS)</h4>
+            <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Hot & crispy traditional snack</p>
+            <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 70</p>
+        </div>
+
+        <!-- Add Button -->
+        <button class="add-btn" style="width: 100%; margin-top: 5px;" onclick="event.stopPropagation()">Add +</button>
+
+    </div>
+
+    <!-- Nachos -->
+    <div class="item-row">
+        
+        <!-- Image Box -->
+        <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+            <img src="nachos.jpeg" alt="Nachos" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+        </div>
+
+        <!-- Item Info -->
+        <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+            <h4 style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Nachos</h4>
+            <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Crunchy nachos with liquid cheese dip</p>
+            <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 0</p>
+        </div>
+
+        <!-- Add Button -->
+        <button class="add-btn" style="width: 100%; margin-top: 5px;" onclick="event.stopPropagation()">Add +</button>
+
+    </div>
+
+                    <!-- Colddrink Fountain 300ml Card -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src="cp300.jpeg" alt="Colddrink Fountain 300ml" style="width: 100%; height: 100%; object-fit: fill;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Colddrink Fountain 300ml (Coke) ▾</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Regular size (Tap flavor below to switch)</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 0</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;" onclick="event.stopPropagation()">Add +</button>
+
+    <!-- Hidden Flavor Variant Boxes -->
+    <div class="variant-box" onclick="event.stopPropagation()">
+        <p style="color: #00e5ff; font-size: 12px; margin: 0 0 8px 0; font-weight: 600;">Select Flavor:</p>
+        
+        <div class="flavor-scroll-container" style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px;">
+            
+            <!-- Coke Thumbnail Box -->
+            <div class="flavor-thumb active" onclick="selectFlavorCard(this, 'coke300.jpeg', 'Colddrink Fountain 300ml (Coke)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="coke300.jpeg" alt="Coke" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Coke</div>
+            </div>
+
+            <!-- Thumsup Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'thumsup300.jpeg', 'Colddrink Fountain 300ml (Thumsup)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="thumsup300.jpeg" alt="Thumsup" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Thumsup</div>
+            </div>
+
+            <!-- Fanta Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'fanta300.jpeg', 'Colddrink Fountain 300ml (Fanta)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="fanta300.jpeg" alt="Fanta" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Fanta</div>
+            </div>
+
+            <!-- Sprite Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'sprite300.jpeg', 'Colddrink Fountain 300ml (Sprite)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="sprite300.jpeg" alt="Sprite" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Sprite</div>
+            </div>
+
+            <!-- Pepsi Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'pepsi300.jpeg', 'Colddrink Fountain 300ml (Pepsi)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="pepsi300.jpeg" alt="Pepsi" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Pepsi</div>
+            </div>
+
+            <!-- Mountain Dew Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'dew300.jpeg', 'Colddrink Fountain 300ml (Mountain Dew)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="dew300.jpeg" alt="Mountain Dew" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Dew</div>
+            </div>
+
+            <!-- Mirinda Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'mirinda300.jpeg', 'Colddrink Fountain 300ml (Mirinda)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="mirinda300.jpeg" alt="Mirinda" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Mirinda</div>
+            </div>
+
+            <!-- 7up Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, '7up300.jpeg', 'Colddrink Fountain 300ml (7up)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="7up300.jpeg" alt="7up" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">7up</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+                    <!-- Burger Card -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src="vegburger.jpeg" alt="Burger" style="width: 100%; height: 100%; object-fit: fill;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Burger (Veg Aloo Tikki Burger) ▾</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Delicious burger (Tap flavor below to switch)</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 0</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;" onclick="event.stopPropagation()">Add +</button>
+
+    <!-- Hidden Flavor Variant Boxes -->
+    <div class="variant-box" onclick="event.stopPropagation()">
+        <p style="color: #00e5ff; font-size: 12px; margin: 0 0 8px 0; font-weight: 600;">Select Flavor:</p>
+        
+        <div class="flavor-scroll-container" style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px;">
+            
+            <!-- Veg Aloo Tikki Burger Thumbnail Box -->
+            <div class="flavor-thumb active" onclick="selectFlavorCard(this, 'vegburger.jpeg', 'Burger (Veg Aloo Tikki Burger)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="vegburger.jpeg" alt="Veg Aloo Tikki Burger" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Veg Tikki</div>
+            </div>
+
+            <!-- Cheese Burger Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'cheeseburger.jpeg', 'Burger (Cheese Burger)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="cheeseburger.jpeg" alt="Cheese Burger" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Cheese</div>
+            </div>
+
+            <!-- Paneer Tikka Burger Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'paneerburger.jpeg', 'Burger (Paneer Tikka Burger)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="paneerburger.jpeg" alt="Paneer Tikka Burger" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Paneer</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+                    <!-- Colddrink Fountain 450ml Card -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src="cp450.jpeg" alt="Colddrink Fountain 450ml" style="width: 100%; height: 100%; object-fit: fill;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Colddrink Fountain 450ml (Coke) ▾</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Large size (Tap flavor below to switch)</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 0</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;" onclick="event.stopPropagation()">Add +</button>
+
+    <!-- Hidden Flavor Variant Boxes -->
+    <div class="variant-box" onclick="event.stopPropagation()">
+        <p style="color: #00e5ff; font-size: 12px; margin: 0 0 8px 0; font-weight: 600;">Select Flavor:</p>
+        
+        <div class="flavor-scroll-container" style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px;">
+            
+            <!-- Coke Thumbnail Box -->
+            <div class="flavor-thumb active" onclick="selectFlavorCard(this, 'coke450.jpeg', 'Colddrink Fountain 450ml (Coke)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="coke450.jpeg" alt="Coke" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Coke</div>
+            </div>
+
+            <!-- Thumsup Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'thumsup450.jpeg', 'Colddrink Fountain 450ml (Thumsup)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="thumsup450.jpeg" alt="Thumsup" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Thumsup</div>
+            </div>
+
+            <!-- Fanta Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'fanta450.jpeg', 'Colddrink Fountain 450ml (Fanta)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="fanta450.jpeg" alt="Fanta" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Fanta</div>
+            </div>
+
+            <!-- Sprite Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'sprite450.jpeg', 'Colddrink Fountain 450ml (Sprite)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="sprite450.jpeg" alt="Sprite" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Sprite</div>
+            </div>
+
+            <!-- Pepsi Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'pepsi450.jpeg', 'Colddrink Fountain 450ml (Pepsi)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="pepsi450.jpeg" alt="Pepsi" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Pepsi</div>
+            </div>
+
+            <!-- Mountain Dew Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'dew450.jpeg', 'Colddrink Fountain 450ml (Mountain Dew)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="dew450.jpeg" alt="Mountain Dew" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Dew</div>
+            </div>
+
+            <!-- Mirinda Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'mirinda450.jpeg', 'Colddrink Fountain 450ml (Mirinda)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="mirinda450.jpeg" alt="Mirinda" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Mirinda</div>
+            </div>
+
+            <!-- 7up Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, '7up450.jpeg', 'Colddrink Fountain 450ml (7up)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="7up450.jpeg" alt="7up" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">7up</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+                    <!-- Sandwich Card -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src="vegsandwich.jpeg" alt="Sandwich" style="width: 100%; height: 100%; object-fit: fill;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Sandwich (Veg Sandwich) ▾</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Fresh sandwich (Tap flavor below to switch)</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 0</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;" onclick="event.stopPropagation()">Add +</button>
+
+    <!-- Hidden Flavor Variant Boxes -->
+    <div class="variant-box" onclick="event.stopPropagation()">
+        <p style="color: #00e5ff; font-size: 12px; margin: 0 0 8px 0; font-weight: 600;">Select Flavor:</p>
+        
+        <div class="flavor-scroll-container" style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px;">
+            
+            <!-- Veg Sandwich Thumbnail Box -->
+            <div class="flavor-thumb active" onclick="selectFlavorCard(this, 'vegsandwich.jpeg', 'Sandwich (Veg Sandwich)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="vegsandwich.jpeg" alt="Veg Sandwich" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Veg</div>
+            </div>
+
+            <!-- Grill Sandwich Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'grillsandwich.jpeg', 'Sandwich (Grill Sandwich)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="grillsandwich.jpeg" alt="Grill Sandwich" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Grill</div>
+            </div>
+
+            <!-- Garlic Sandwich Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'garlicsandwich.jpeg', 'Sandwich (Garlic Sandwich)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="garlicsandwich.jpeg" alt="Garlic Sandwich" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Garlic</div>
+            </div>
+
+            <!-- Paneer Sandwich Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'paneersandwich.jpeg', 'Sandwich (Paneer Sandwich)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="paneersandwich.jpeg" alt="Paneer Sandwich" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Paneer</div>
+            </div>
+
+            <!-- Chocolate Sandwich Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'chocolatesandwich.jpeg', 'Sandwich (Chocolate Sandwich)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="chocolatesandwich.jpeg" alt="Chocolate Sandwich" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Chocolate</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+   
+                
+                    <!-- Colddrink Fountain 650ml Card -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src="cp650.jpeg" alt="Colddrink Fountain 650ml" style="width: 100%; height: 100%; object-fit: fill;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Colddrink Fountain 650ml (Coke) ▾</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Sharing size (Tap flavor below to switch)</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 0</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;" onclick="event.stopPropagation()">Add +</button>
+
+    <!-- Hidden Flavor Variant Boxes -->
+    <div class="variant-box" onclick="event.stopPropagation()">
+        <p style="color: #00e5ff; font-size: 12px; margin: 0 0 8px 0; font-weight: 600;">Select Flavor:</p>
+        
+        <div class="flavor-scroll-container" style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px;">
+            
+            <!-- Coke Thumbnail Box -->
+            <div class="flavor-thumb active" onclick="selectFlavorCard(this, 'coke650.jpeg', 'Colddrink Fountain 650ml (Coke)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="coke650.jpeg" alt="Coke" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Coke</div>
+            </div>
+
+            <!-- Thumsup Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'thumsup650.jpeg', 'Colddrink Fountain 650ml (Thumsup)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="thumsup650.jpeg" alt="Thumsup" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Thumsup</div>
+            </div>
+
+            <!-- Fanta Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'fanta650.jpeg', 'Colddrink Fountain 650ml (Fanta)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="fanta650.jpeg" alt="Fanta" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Fanta</div>
+            </div>
+
+            <!-- Sprite Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'sprite650.jpeg', 'Colddrink Fountain 650ml (Sprite)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="sprite650.jpeg" alt="Sprite" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Sprite</div>
+            </div>
+
+            <!-- Pepsi Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'pepsi650.jpeg', 'Colddrink Fountain 650ml (Pepsi)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="pepsi650.jpeg" alt="Pepsi" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Pepsi</div>
+            </div>
+
+            <!-- Mountain Dew Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'dew650.jpeg', 'Colddrink Fountain 650ml (Mountain Dew)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="dew650.jpeg" alt="Mountain Dew" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Dew</div>
+            </div>
+
+            <!-- Mirinda Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'mirinda650.jpeg', 'Colddrink Fountain 650ml (Mirinda)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="mirinda650.jpeg" alt="Mirinda" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Mirinda</div>
+            </div>
+
+            <!-- 7up Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, '7up650.jpeg', 'Colddrink Fountain 650ml (7up)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="7up650.jpeg" alt="7up" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">7up</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+                    <!-- French Fries Card -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src="saltedfries.jpeg" alt="French Fries" style="width: 100%; height: 100%; object-fit: fill;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">French Fries (Salted Fry) ▾</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Crispy fries (Tap flavor below to switch)</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 0</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;" onclick="event.stopPropagation()">Add +</button>
+
+    <!-- Hidden Flavor Variant Boxes -->
+    <div class="variant-box" onclick="event.stopPropagation()">
+        <p style="color: #00e5ff; font-size: 12px; margin: 0 0 8px 0; font-weight: 600;">Select Flavor:</p>
+        
+        <div class="flavor-scroll-container" style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px;">
+            
+            <!-- Salted Fry Thumbnail Box -->
+            <div class="flavor-thumb active" onclick="selectFlavorCard(this, 'saltedfries.jpeg', 'French Fries (Salted Fry)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="saltedfries.jpeg" alt="Salted Fry" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Salted</div>
+            </div>
+
+            <!-- Peri-Peri Fries Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'perifries.jpeg', 'French Fries (Peri-Peri Fry)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="perifries.jpeg" alt="Peri-Peri Fry" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Peri-Peri</div>
+            </div>
+
+            <!-- Cheese Fries Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'cheesefries.jpeg', 'French Fries (Cheese Fries)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="cheesefries.jpeg" alt="Cheese Fries" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Cheese</div>
+            </div>
+
+            <!-- Farali Plain Fry Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'faralifries.jpeg', 'French Fries (Farali Plain Fry)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="faralifries.jpeg" alt="Farali Plain Fry" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Farali</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+                    <!-- Colddrink Fountain 900ml Card -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src="cp900.jpeg" alt="Colddrink Fountain 900ml" style="width: 100%; height: 100%; object-fit: fill;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Colddrink Fountain 900ml (Coke) ▾</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Mega size (Tap flavor below to switch)</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 0</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;" onclick="event.stopPropagation()">Add +</button>
+
+    <!-- Hidden Flavor Variant Boxes -->
+    <div class="variant-box" onclick="event.stopPropagation()">
+        <p style="color: #00e5ff; font-size: 12px; margin: 0 0 8px 0; font-weight: 600;">Select Flavor:</p>
+        
+        <div class="flavor-scroll-container" style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px;">
+            
+            <!-- Coke Thumbnail Box -->
+            <div class="flavor-thumb active" onclick="selectFlavorCard(this, 'coke900.jpeg', 'Colddrink Fountain 900ml (Coke)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="coke900.jpeg" alt="Coke" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Coke</div>
+            </div>
+
+            <!-- Thumsup Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'thumsup900.jpeg', 'Colddrink Fountain 900ml (Thumsup)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="thumsup900.jpeg" alt="Thumsup" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Thumsup</div>
+            </div>
+
+            <!-- Fanta Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'fanta900.jpeg', 'Colddrink Fountain 900ml (Fanta)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="fanta900.jpeg" alt="Fanta" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Fanta</div>
+            </div>
+
+            <!-- Sprite Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'sprite900.jpeg', 'Colddrink Fountain 900ml (Sprite)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="sprite900.jpeg" alt="Sprite" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Sprite</div>
+            </div>
+
+            <!-- Pepsi Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'pepsi900.jpeg', 'Colddrink Fountain 900ml (Pepsi)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="pepsi900.jpeg" alt="Pepsi" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Pepsi</div>
+            </div>
+
+            <!-- Mountain Dew Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'dew900.jpeg', 'Colddrink Fountain 900ml (Mountain Dew)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="dew900.jpeg" alt="Mountain Dew" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Dew</div>
+            </div>
+
+            <!-- Mirinda Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'mirinda900.jpeg', 'Colddrink Fountain 900ml (Mirinda)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="mirinda900.jpeg" alt="Mirinda" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Mirinda</div>
+            </div>
+
+            <!-- 7up Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, '7up900.jpeg', 'Colddrink Fountain 900ml (7up)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="7up900.jpeg" alt="7up" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">7up</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+                    <!-- Maggi Card -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src="vegmasalamaggi.jpeg" alt="Maggi" style="width: 100%; height: 100%; object-fit: fill;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Maggi (Veg Masala Maggi) ▾</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Hot & spicy maggi (Tap flavor below to switch)</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 0</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;" onclick="event.stopPropagation()">Add +</button>
+
+    <!-- Hidden Flavor Variant Boxes -->
+    <div class="variant-box" onclick="event.stopPropagation()">
+        <p style="color: #00e5ff; font-size: 12px; margin: 0 0 8px 0; font-weight: 600;">Select Flavor:</p>
+        
+        <div class="flavor-scroll-container" style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px;">
+            
+            <!-- Veg Masala Maggi Thumbnail Box -->
+            <div class="flavor-thumb active" onclick="selectFlavorCard(this, 'vegmasalamaggi.jpeg', 'Maggi (Veg Masala Maggi)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="vegmasalamaggi.jpeg" alt="Veg Masala Maggi" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Veg Masala</div>
+            </div>
+
+            <!-- Peri-Peri Maggi Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'perifrimaggi.jpeg', 'Maggi (Peri-Peri Maggi)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="perifrimaggi.jpeg" alt="Peri-Peri Maggi" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Peri-Peri</div>
+            </div>
+
+            <!-- Cheese Butter Maggi Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'cheesebuttermaggi.jpeg', 'Maggi (Cheese Butter Maggi)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="cheesebuttermaggi.jpeg" alt="Cheese Butter Maggi" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Cheese</div>
+            </div>
+
+            <!-- Masala Maggi Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'masalamaggi.jpeg', 'Maggi (Masala Maggi)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="masalamaggi.jpeg" alt="Masala Maggi" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Masala</div>
+            </div>
+
+            <!-- Plain Maggi Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'plainmaggi.jpeg', 'Maggi (Plain Maggi)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="plainmaggi.jpeg" alt="Plain Maggi" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Plain</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+ 
+</div>
+</div>
+
+            
+
+            <!-- 3. COLD BEVERAGES SECTION -->
+            <div class="category-block" id="beverages">
+                <h3 class="cat-heading">🥤 Cold Beverages</h3>
+                <div class="items-list">
+                    
+                    
+
+
+                    <!-- Drinking Water 1 Litre Card -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img src="water1ltr.jpeg" alt="Drinking Water 1 Litre" style="width: 100%; height: 100%; object-fit: fill;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Drinking Water (1 Litre Bottle)</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Pure & chilled packaged drinking water</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 0</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;" onclick="event.stopPropagation()">Add +</button>
+
+</div>
+
+                    <!-- Red Bull Energy Drink Card -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img src="redbull.jpeg" alt="Red Bull Energy Drink" style="width: 100%; height: 100%; object-fit: fill;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Red Bull Energy Drink </h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Vitalizes body and mind</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 180</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;" onclick="event.stopPropagation()">Add +</button>
+
+</div>
+
+                    <!-- Coolberg Non-Alcoholic Beer Card -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src="coolbergmalt.jpeg" alt="Coolberg Beer" style="width: 100%; height: 100%; object-fit: fill;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Coolberg Non-Alcoholic Beer (Malt) ▾</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Refreshing non-alcoholic brew (Tap flavor below to switch)</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 160</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;" onclick="event.stopPropagation()">Add +</button>
+
+    <!-- Hidden Flavor Variant Boxes -->
+    <div class="variant-box" onclick="event.stopPropagation()">
+        <p style="color: #00e5ff; font-size: 12px; margin: 0 0 8px 0; font-weight: 600;">Select Flavor:</p>
+        
+        <div class="flavor-scroll-container" style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px;">
+            
+            <!-- Malt Thumbnail Box -->
+            <div class="flavor-thumb active" onclick="selectFlavorCard(this, 'coolbergmalt.jpeg', 'Coolberg Non-Alcoholic Beer (Malt)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="coolbergmalt.jpeg" alt="Malt" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Malt</div>
+            </div>
+
+            <!-- Ginger Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'coolbergginger.jpeg', 'Coolberg Non-Alcoholic Beer (Ginger)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="coolbergginger.jpeg" alt="Ginger" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Ginger</div>
+            </div>
+
+            <!-- Cranberry Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'coolbergcranberry.jpeg', 'Coolberg Non-Alcoholic Beer (Cranberry)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="coolbergcranberry.jpeg" alt="Cranberry" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Cranberry</div>
+            </div>
+
+            <!-- Mint Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'coolbergmint.jpeg', 'Coolberg Non-Alcoholic Beer (Mint)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="coolbergmint.jpeg" alt="Mint" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Mint</div>
+            </div>
+
+            <!-- Strawberry Thumbnail Box -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'coolbergstrawberry.jpeg', 'Coolberg Non-Alcoholic Beer (Strawberry)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="coolbergstrawberry.jpeg" alt="Strawberry" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Strawberry</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+                    <!-- Soft Drink Cans Card (Coke, ThumsUp, Sprite, etc.) -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src="cokezero.jpeg" alt="Soft Drink Can" style="width: 100%; height: 100%; object-fit: fill;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Coke Zero Can ▾</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Refreshing soft drink can (Tap flavor below to switch)</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 0</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;" onclick="event.stopPropagation()">Add +</button>
+
+    <!-- Hidden Flavor Variant Boxes -->
+    <div class="variant-box" onclick="event.stopPropagation()">
+        <p style="color: #00e5ff; font-size: 12px; margin: 0 0 8px 0; font-weight: 600;">Select Flavor / Variant:</p>
+        
+        <div class="flavor-scroll-container" style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px;">
+            
+            <!-- Coke Zero Thumbnail -->
+            <div class="flavor-thumb active" onclick="selectFlavorCard(this, 'cokezero.jpeg', 'Coke Zero Can')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="cokezero.jpeg" alt="Coke Zero" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Coke Zero</div>
+            </div>
+
+            <!-- Diet Coke Thumbnail -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'dietcoke.jpeg', 'Diet Coke Can')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="dietcoke.jpeg" alt="Diet Coke" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Diet Coke</div>
+            </div>
+
+            <!-- Thums Up Thumbnail -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'thumsup.jpeg', 'Thums Up Can')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="thumsup.jpeg" alt="Thums Up" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Thums Up</div>
+            </div>
+
+            <!-- Sprite Thumbnail -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'sprite.jpeg', 'Sprite Can')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="sprite.jpeg" alt="Sprite" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Sprite</div>
+            </div>
+
+            <!-- Maaza Thumbnail -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'maaza.jpeg', 'Maaza Can')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="maaza.jpeg" alt="Maaza" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Maaza</div>
+            </div>
+
+            <!-- Pulpy Orange Thumbnail -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'pulpyorange.jpeg', 'Pulpy Orange Can')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="pulpyorange.jpeg" alt="Pulpy Orange" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Pulpy Orange</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+                    <!-- Pepsi Soft Drink Cans Card -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src="pepsi.jpeg" alt="Pepsi Soft Drink Can" style="width: 100%; height: 100%; object-fit: fill;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Pepsi Can ▾</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Refreshing soft drink can (Tap flavor below to switch)</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 0</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;" onclick="event.stopPropagation()">Add +</button>
+
+    <!-- Hidden Flavor Variant Boxes -->
+    <div class="variant-box" onclick="event.stopPropagation()">
+        <p style="color: #00e5ff; font-size: 12px; margin: 0 0 8px 0; font-weight: 600;">Select Flavor / Variant:</p>
+        
+        <div class="flavor-scroll-container" style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px;">
+            
+            <!-- Pepsi Thumbnail -->
+            <div class="flavor-thumb active" onclick="selectFlavorCard(this, 'pepsi.jpeg', 'Pepsi Can')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="pepsi.jpeg" alt="Pepsi" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Pepsi</div>
+            </div>
+
+            <!-- Mirinda Thumbnail -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'mirinda.jpeg', 'Mirinda Can')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="mirinda.jpeg" alt="Mirinda" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Mirinda</div>
+            </div>
+
+            <!-- Mountain Dew Thumbnail -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'mountaindew.jpeg', 'Mountain Dew Can')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="mountaindew.jpeg" alt="Mountain Dew" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Mountain Dew</div>
+            </div>
+
+            <!-- Zero Pepsi Thumbnail -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'zeropepsi.jpeg', 'Zero Pepsi Can')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="zeropepsi.jpeg" alt="Zero Pepsi" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Zero Pepsi</div>
+            </div>
+
+            <!-- 7 Up Thumbnail -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, '7up.jpeg', '7 Up Can')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="7up.jpeg" alt="7 Up" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">7 Up</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+                    <!-- Monster Energy Drink Card -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src="monsteroriginal.jpeg" alt="Monster Energy Drink" style="width: 100%; height: 100%; object-fit: fill;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Monster Energy (Original) ▾</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Unleash the Beast (Tap flavor below to switch)</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 0</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;" onclick="event.stopPropagation()">Add +</button>
+
+    <!-- Hidden Flavor Variant Boxes -->
+    <div class="variant-box" onclick="event.stopPropagation()">
+        <p style="color: #00e5ff; font-size: 12px; margin: 0 0 8px 0; font-weight: 600;">Select Flavor / Variant:</p>
+        
+        <div class="flavor-scroll-container" style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px;">
+            
+            <!-- Monster Original Thumbnail -->
+            <div class="flavor-thumb active" onclick="selectFlavorCard(this, 'monsteroriginal.jpeg', 'Monster Energy (Original)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="monsteroriginal.jpeg" alt="Original" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Original</div>
+            </div>
+
+            <!-- Ultra White Thumbnail -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'monsterultrawhite.jpeg', 'Monster Ultra (Zero Sugar)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="monsterultrawhite.jpeg" alt="Ultra White" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Ultra White</div>
+            </div>
+
+            <!-- Mango Loco Thumbnail -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'monstermangoloco.jpeg', 'Monster Juice (Mango Loco)')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="monstermangoloco.jpeg" alt="Mango Loco" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Mango Loco</div>
+            </div>
+
+            <!-- Pipeline Punch Thumbnail -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'monsterpipeline.jpeg', 'Monster Pipeline Punch')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="monsterpipeline.jpeg" alt="Pipeline Punch" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Pipeline Punch</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+                    <!-- Cold Coffee Card -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src="classiccoldcoffee.jpeg" alt="Cold Coffee" style="width: 100%; height: 100%; object-fit: fill;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Classic Cold Coffee ▾</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Chilled & creamy blended coffee (Tap flavor below to switch)</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 0</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;" onclick="event.stopPropagation()">Add +</button>
+
+    <!-- Hidden Flavor Variant Boxes -->
+    <div class="variant-box" onclick="event.stopPropagation()">
+        <p style="color: #00e5ff; font-size: 12px; margin: 0 0 8px 0; font-weight: 600;">Select Flavor / Variant:</p>
+        
+        <div class="flavor-scroll-container" style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px;">
+            
+            <!-- Classic Cold Coffee Thumbnail -->
+            <div class="flavor-thumb active" onclick="selectFlavorCard(this, 'classiccoldcoffee.jpeg', 'Classic Cold Coffee')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="classiccoldcoffee.jpeg" alt="Classic" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Classic</div>
+            </div>
+
+            <!-- Choco Mocha Thumbnail -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'chocomochacoffee.jpeg', 'Choco Mocha Cold Coffee')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="chocomochacoffee.jpeg" alt="Choco Mocha" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Choco Mocha</div>
+            </div>
+
+            <!-- Hazelnut Cold Coffee Thumbnail -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'hazelnutcoffee.jpeg', 'Hazelnut Cold Coffee')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="hazelnutcoffee.jpeg" alt="Hazelnut" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Hazelnut</div>
+            </div>
+
+            <!-- Caramel Cold Coffee Thumbnail -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'caramelcoffee.jpeg', 'Caramel Cold Coffee')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="caramelcoffee.jpeg" alt="Caramel" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Caramel</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+                    <!-- Ice Cream Card -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src=dryfruiticecream.jpeg alt="Ice Cream" style="width: 100%; height: 100%; object-fit: fill;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Vanilla Ice Cream ▾</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Rich & creamy delicious ice cream (Tap flavor below to switch)</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 0</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;" onclick="event.stopPropagation()">Add +</button>
+
+    <!-- Hidden Flavor Variant Boxes -->
+    <div class="variant-box" onclick="event.stopPropagation()">
+        <p style="color: #00e5ff; font-size: 12px; margin: 0 0 8px 0; font-weight: 600;">Select Flavor / Variant:</p>
+        
+        <div class="flavor-scroll-container" style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px;">
+            
+            <!-- Vanilla Thumbnail -->
+            <div class="flavor-thumb active" onclick="selectFlavorCard(this, 'vanillaicecream.jpeg', 'Vanilla Ice Cream')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="vanillaicecream.jpeg" alt="Vanilla" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Vanilla</div>
+            </div>
+
+            <!-- Chocolate Thumbnail -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'chocolateicecream.jpeg', 'Chocolate Ice Cream')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="chocolateicecream.jpeg" alt="Chocolate" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Chocolate</div>
+            </div>
+
+            <!-- Butterscotch Thumbnail -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'butterscotchicecream.jpeg', 'Butterscotch Ice Cream')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="butterscotchicecream.jpeg" alt="Butterscotch" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Butterscotch</div>
+            </div>
+
+            <!-- American Dry Fruit Thumbnail -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'dryfruiticecream.jpeg', 'American Dry Fruit Ice Cream')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="dryfruiticecream.jpeg" alt="Dry Fruit" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Dry Fruit</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+
+            <!-- 4. HOT BEVERAGES SECTION -->
+            <div class="category-block" id="hot-bev">
+                <h3 class="cat-heading">☕ Hot Beverages</h3>
+                <div class="items-list">
+                 <!-- Cafe Latte Card (No Flavors) -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src="cafelatte.jpeg" alt="Cafe Latte" style="width: 100%; height: 100%; object-fit: fill;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Cafe Latte</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Rich espresso with steamed milk and smooth foam</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 0</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;">Add +</button>
+
+</div>
+
+                 <!-- Cappuccino Card (No Flavors) -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src="cappuccino.jpeg" alt="Cappuccino" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Cappuccino</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Classic espresso with steamed milk and thick milk foam</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 0</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;">Add +</button>
+
+</div>
+
+                 <!-- Cardamom Tea Card (No Flavors) -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src="cardamomtea.jpeg" alt="Cardamom Tea" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Cardamom Tea</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Authentic Indian tea brewed with milk and aromatic cardamom</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 0</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;">Add +</button>
+
+</div>   
+
+                 <!-- Espresso Card (No Flavors) -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src="espresso.jpeg" alt="Espresso" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Espresso</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Rich, bold, and concentrated shot of pure coffee</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 0</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;">Add +</button>
+
+</div>
+
+                 <!-- Ginger Tea Card (No Flavors) -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src="gingartea.jpeg" alt="Ginger Tea" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Ginger Tea</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Warm and soothing tea brewed with fresh crushed ginger</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 0</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;">Add +</button>
+
+</div>
+
+                 <!-- Hot Chocolate Card (No Flavors) -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src="hotchocolate.jpeg" alt="Hot Chocolate" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Hot Chocolate</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Rich, creamy, and indulgent hot chocolate beverage</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 0</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;">Add +</button>
+
+</div>
+
+                 <!-- Masala Tea Card (No Flavors) -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src="masalatea.jpeg" alt="Masala Tea" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Masala Tea</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Traditional Indian tea brewed with aromatic spices and herbs</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 0</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;">Add +</button>
+
+</div>
+
+</div>
+</div>
+
+            <!-- 5. FRESH & LIVE SECTION -->
+            <div class="category-block" id="fresh-live">
+                <h3 class="cat-heading">🍟 Fresh & Live Bites</h3>
+                <div class="items-list">
+
+
+                    <!-- Aloo Tikki Card (Fresh & Live) -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src="alootikki.jpeg" alt="Aloo Tikki" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Aloo Tikki</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Crispy golden potato patty served hot & fresh</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 0</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;">Add +</button>
+
+</div>
+
+
+                    <!-- Nuggets Card (Fresh & Live) -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src="nuggets.jpeg" alt="Nuggets" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Nuggets</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Crispy golden bites fried fresh and served hot</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 0</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;">Add +</button>
+
+</div>
+
+                    <!-- Potato Smiles Card (Fresh & Live) -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src="potatosmiles.jpeg" alt="Potato Smiles" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Potato Smiles</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Crispy, happy potato bites fried fresh to perfection</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 0</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;">Add +</button>
+
+</div>
+
+                    <!-- Garlic Bread Card (Fresh & Live) -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src="garlicbread.jpeg" alt="Garlic Bread" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Garlic Bread</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Freshly baked bread loaded with garlic butter and herbs</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 0</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;">Add +</button>
+
+</div> 
+
+                    <!-- Pizza Card (Fresh & Live with All Veg Flavors) -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src="margheritapizza.jpeg" alt="Pizza" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Margherita Pizza ▾</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Freshly baked cheesy veg pizza (Tap flavor below to switch)</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 0</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;" onclick="event.stopPropagation()">Add +</button>
+
+    <!-- Hidden Flavor Variant Boxes -->
+    <div class="variant-box" onclick="event.stopPropagation()">
+        <p style="color: #00e5ff; font-size: 12px; margin: 0 0 8px 0; font-weight: 600;">Select Veg Flavor / Variant:</p>
+        
+        <div class="flavor-scroll-container" style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px;">
+            
+            <!-- Margherita Thumbnail -->
+            <div class="flavor-thumb active" onclick="selectFlavorCard(this, 'margheritapizza.jpeg', 'Margherita Pizza')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="margheritapizza.jpeg" alt="Margherita" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Margherita</div>
+            </div>
+
+            <!-- Farmhouse Thumbnail -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'farmhousepizza.jpeg', 'Farmhouse Pizza')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="farmhousepizza.jpeg" alt="Farmhouse" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Farmhouse</div>
+            </div>
+
+            <!-- Paneer Tikka Thumbnail -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'paneertikkapizza.jpeg', 'Paneer Tikka Pizza')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="paneertikkapizza.jpeg" alt="Paneer Tikka" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Paneer Tikka</div>
+            </div>
+
+            <!-- Corn & Cheese Thumbnail -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'corncheesepizza.jpeg', 'Corn & Cheese Pizza')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="corncheesepizza.jpeg" alt="Corn & Cheese" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Corn & Cheese</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+ 
+                    <!-- Momos Card -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src="vegclassicmomos.jpeg" alt="Momos" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Veg Classic Momos ▾</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Delicious hot & fresh momos (Tap flavor/type below to switch)</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 0</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;" onclick="event.stopPropagation()">Add +</button>
+
+    <!-- Hidden Flavor Variant Boxes -->
+    <div class="variant-box" onclick="event.stopPropagation()">
+        <p style="color: #00e5ff; font-size: 12px; margin: 0 0 8px 0; font-weight: 600;">Select Flavor & Style:</p>
+        
+        <div class="flavor-scroll-container" style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px;">
+            
+            <!-- Veg Classic Thumbnail -->
+            <div class="flavor-thumb active" onclick="selectFlavorCard(this, 'vegclassicmomos.jpeg', 'Veg Classic Momos')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="vegclassicmomos.jpeg" alt="Veg Classic" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Veg Classic</div>
+            </div>
+
+            <!-- Paneer Thumbnail -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'paneermomos.jpeg', 'Paneer Momos')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="paneermomos.jpeg" alt="Paneer" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Paneer</div>
+            </div>
+
+            <!-- Cheese Corn Thumbnail -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'cheesecornmomos.jpeg', 'Cheese Corn Momos')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="cheesecornmomos.jpeg" alt="Cheese Corn" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Cheese Corn</div>
+            </div>
+
+            <!-- Mushroom Thumbnail -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'mushroommomos.jpeg', 'Mushroom Momos')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="mushroommomos.jpeg" alt="Mushroom" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Mushroom</div>
+            </div>
+
+            <!-- Soya Keema Thumbnail -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'soyakeemamomos.jpeg', 'Soya Keema Momos')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="soyakeemamomos.jpeg" alt="Soya Keema" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Soya Keema</div>
+            </div>
+
+            <!-- Tandoori Thumbnail -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'tandoorimomos.jpeg', 'Tandoori Momos')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="tandoorimomos.jpeg" alt="Tandoori" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Tandoori</div>
+            </div>
+
+            <!-- Kurkure Thumbnail -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'kurkuremomos.jpeg', 'Kurkure Momos')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="kurkuremomos.jpeg" alt="Kurkure" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Kurkure</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+                    <!-- Chaat & Chaska Card (With Flavors/Varieties) -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src="bhelpuri.jpeg" alt="Chaat" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Bhelpuri ▾</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Crispy, tangy & spicy Indian street food (Tap variant below to switch)</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 0</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;" onclick="event.stopPropagation()">Add +</button>
+
+    <!-- Hidden Flavor Variant Boxes -->
+    <div class="variant-box" onclick="event.stopPropagation()">
+        <p style="color: #00e5ff; font-size: 12px; margin: 0 0 8px 0; font-weight: 600;">Select Chaat Variant:</p>
+        
+        <div class="flavor-scroll-container" style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px;">
+            
+            <!-- Bhelpuri Thumbnail -->
+            <div class="flavor-thumb active" onclick="selectFlavorCard(this, 'bhelpuri.jpeg', 'Bhelpuri')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="bhelpuri.jpeg" alt="Bhelpuri" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Bhelpuri</div>
+            </div>
+
+            <!-- Sevpuri Thumbnail -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'sevpuri.jpeg', 'Sevpuri')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="sevpuri.jpeg" alt="Sevpuri" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Sevpuri</div>
+            </div>
+
+            <!-- Dahi Puri Thumbnail -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'dahipuri.jpeg', 'Dahi Puri')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="dahipuri.jpeg" alt="Dahi Puri" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Dahi Puri</div>
+            </div>
+
+            <!-- Papdi Chaat Thumbnail -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'papdichaat.jpeg', 'Papdi Chaat')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="papdichaat.jpeg" alt="Papdi Chaat" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Papdi Chaat</div>
+            </div>
+
+            <!-- Jhalmuri Thumbnail -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'jhalmuri.jpeg', 'Jhalmuri')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="jhalmuri.jpeg" alt="Jhalmuri" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Jhalmuri</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+                     
+
+                    <!-- Rolls Card (With Veg & Paneer Variants) -->
+<div class="item-row" 
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src="vegroll.jpeg" alt="Rolls" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Veg Roll ▾</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Delicious wrapped rolls packed with fresh fillings (Tap variant below to switch)</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 0</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;" onclick="event.stopPropagation()">Add +</button>
+
+    <!-- Hidden Flavor Variant Boxes -->
+    <div class="variant-box" onclick="event.stopPropagation()">
+        <p style="color: #00e5ff; font-size: 12px; margin: 0 0 8px 0; font-weight: 600;">Select Roll Variant:</p>
+        
+        <div class="flavor-scroll-container" style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px;">
+            
+            <!-- Veg Roll Thumbnail -->
+            <div class="flavor-thumb active" onclick="selectFlavorCard(this, 'vegroll.jpeg', 'Veg Roll')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="vegroll.jpeg" alt="Veg Roll" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Veg Roll</div>
+            </div>
+
+            <!-- Veg Cheese Roll Thumbnail -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'vegcheeseroll.jpeg', 'Veg Cheese Roll')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="vegcheeseroll.jpeg" alt="Veg Cheese" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Veg Cheese</div>
+            </div>
+
+            <!-- Veg Schezwan Roll Thumbnail -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'vegschezwanroll.jpeg', 'Veg Schezwan Roll')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="vegschezwanroll.jpeg" alt="Veg Schezwan" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Veg Schez.</div>
+            </div>
+
+            <!-- Veg Cheese Schezwan Roll Thumbnail -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'vegcheeseschezwanroll.jpeg', 'Veg Cheese Schezwan Roll')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="vegcheeseschezwanroll.jpeg" alt="Veg Cheese Schezwan" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Cheese Schez.</div>
+            </div>
+
+            <!-- Paneer Roll Thumbnail -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'paneerroll.jpeg', 'Paneer Roll')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="paneerroll.jpeg" alt="Paneer Roll" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Paneer Roll</div>
+            </div>
+
+            <!-- Paneer Cheese Roll Thumbnail -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'paneercheeseroll.jpeg', 'Paneer Cheese Roll')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="paneercheeseroll.jpeg" alt="Paneer Cheese" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Paneer Cheese</div>
+            </div>
+
+            <!-- Paneer Schezwan Roll Thumbnail -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'paneerschezwanroll.jpeg', 'Paneer Schezwan Roll')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="paneerschezwanroll.jpeg" alt="Paneer Schezwan" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">Paneer Schez.</div>
+            </div>
+
+            <!-- Paneer Cheese Schezwan Roll Thumbnail -->
+            <div class="flavor-thumb" onclick="selectFlavorCard(this, 'paneercheeseschezwanroll.jpeg', 'Paneer Cheese Schezwan Roll')" style="border-radius: 8px; overflow: hidden; text-align: center; cursor: pointer; min-width: 65px; height: 65px; position: relative; box-sizing: border-box;">
+                <img src="paneercheeseschezwanroll.jpeg" alt="Paneer Cheese Schezwan" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); font-size: 9px; color: #fff; padding: 2px 0;">P. Cheese Schez.</div>
+            </div>
+
+        </div>
+    </div>
+</div>                                     
+
+
+                    <!-- Sweet Corn Card -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src="sweetcorn.jpeg" alt="Sweet Corn" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Sweet Corn</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Steamed sweet corn kernels tossed with butter and spices</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 0</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;">Add +</button>
+
+</div>
+
+
+            
+
+            <!-- 7. COMBOS SECTION -->
+            <div class="category-block" id="combos">
+                <h3 class="cat-heading">🍱 Blockbuster Combos</h3>
+                <div class="items-list">
+                <!-- Couple Combo Card -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src="couplecombo.jpeg" alt="Couple Combo" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Couple Combo</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Perfect sharing combo for two with delicious treats and drinks</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 0</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;">Add +</button>
+
+</div>
+
+                    <!-- Family Tub Meal Combo Card -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src="familytubmeal.jpeg" alt="Family Tub Meal Combo" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Family Tub Meal</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Mega sharing tub filled with delicious snacks & drinks for the whole family</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 0</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;">Add +</button>
+
+</div>
+
+                <!-- Medium Tub Combo Card -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src="mediumtubcombo.jpeg" alt="Medium Tub Combo" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Medium Tub Combo</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Delicious medium tub popcorn paired with refreshing beverages</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 0</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;">Add +</button>
+
+</div>
+
+                <!-- Nachos Combo Card -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src="nachoscombo.jpeg" alt="Nachos Combo" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Nachos Combo</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Crispy nachos served with warm melted cheese dip and refreshing drink</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 0</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;">Add +</button>
+
+</div>
+
+                <!-- Samosa Coke Combo Card -->
+<div class="item-row">
+    
+    <!-- Main Big Image Container -->
+    <div style="width: 100%; height: 130px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: #111; display: flex; align-items: center; justify-content: center;">
+        <img class="main-popcorn-img" src="samosacokecombo.jpeg" alt="Samosa Coke Combo" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'color: #555; font-size: 13px;\'>[ No Image Found ]</span>';">
+    </div>
+
+    <!-- Main Item Title and Info -->
+    <div class="item-info" style="width: 100%; margin-bottom: 10px;">
+        <h4 class="main-popcorn-title" style="margin: 0 0 4px 0; color: #ffffff; font-size: 15px;">Samosa Coke Combo</h4>
+        <p style="margin: 0 0 8px 0; color: #b0b0b0; font-size: 12px;">Hot & crispy samosa served with chilled refreshing Coca-Cola</p>
+        <p style="color: #00e5ff; font-weight: bold; margin: 0; font-size: 14px;">₹ 0</p>
+    </div>
+
+    <!-- Main Add Button -->
+    <button class="add-btn" style="width: 100%; margin-top: 5px;">Add +</button>
+
+</div>
+     
+
+    </main>
+
+    <script src="menu-data.js"></script>
+    <script src="script.js"></script>
+
+<!-- <!-- Order Summary Modal -->
+<div id="orderModal" class="modal-overlay" style="display: none;">
+    <div class="modal-content" style="width: 92%; max-width: 420px; box-sizing: border-box; margin: 20px auto;">
+        <div class="modal-header">
+            <h3>🛒 Your Order Summary</h3>
+            <span class="close-btn" onclick="closeOrderModal()">&times;</span>
+        </div>
+        
+        <!-- Cinema, Screen, Seat & Order ID Dynamic Header -->
+        <div style="background: #1a1a1a; padding: 10px 14px; border-radius: 8px; margin: 10px 0; border: 1px solid #333; text-align: left; box-sizing: border-box;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                <span id="cinemaNameDisplay" style="color: #00e5ff; font-weight: bold; font-size: 13px;">CineBites Cinema</span>
+                <span id="screenNameDisplay" style="color: #aaa; font-size: 11px; background: #2a2a2a; padding: 2px 6px; border-radius: 4px;">Screen 1</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #ccc;">
+                <span>Seat: <strong id="seatNoDisplay" style="color: #00ff88;">A-12</strong></span>
+                <span>Order ID: <strong id="orderIdDisplay" style="color: #ffaa00;">CB-9854</strong></span>
+            </div>
+        </div>
+
+        <!-- Optional Customer Details Section (Non-mandatory) -->
+        <div style="background: #1a1a1a; padding: 8px 12px; border-radius: 8px; margin-bottom: 12px; border: 1px solid #333; text-align: left;">
+            <details style="cursor: pointer;">
+                <summary style="color: #aaa; font-size: 11px; font-weight: 500; outline: none;">Add Name / Mobile (Optional)</summary>
+                <div style="display: flex; gap: 8px; margin-top: 8px;">
+                    <input type="text" id="optionalCustName" placeholder="Your Name (Optional)" style="flex: 1; background: #2a2a2a; border: 1px solid #444; color: #fff; padding: 5px 8px; border-radius: 4px; font-size: 11px;">
+                    <input type="text" id="optionalCustPhone" placeholder="Mobile No (Optional)" style="flex: 1; background: #2a2a2a; border: 1px solid #444; color: #fff; padding: 5px 8px; border-radius: 4px; font-size: 11px;">
+                </div>
+            </details>
+        </div>
+
+        <!-- Dynamic Selected Items with Images & Plus/Minus -->
+        <div id="modalItemsContainer" class="modal-items-list"></div>
+
+        <!-- Bill Calculation Section -->
+        <div class="bill-section">
+            <div class="bill-row">
+                <span>Items Total:</span>
+                <span id="modalSubtotal">₹0</span>
+            </div>
+            <div class="bill-row small-fee">
+                <span>Convenience Fee</span>
+                <span id="modalFee">₹0</span>
+            </div>
+            <hr class="bill-divider">
+            <div class="bill-row grand-total">
+                <span>Grand Total:</span>
+                <span id="modalGrandTotal">₹0</span>
+            </div>
+        </div>
+
+        <!-- Policies & Info Section -->
+        <div class="order-info-box">
+            <p>⏱️ <strong>Order Time:</strong> Food will reach you within 15-20 minutes.</p>
+            <p>❌ <strong>Cancellation Policy:</strong> Free cancellation allowed within 5 minutes of order placement.</p>
+            <p class="disclaimer">⚠️ Food quality & service responsibility lies with the Cinema management. CineBites is only a technology service provider.</p>
+        </div>
+
+        <!-- Pay Now Action Button -->
+        <button class="pay-now-btn" onclick="openPaymentModal()">Pay Now 🚀</button>
+    </div>
+</div>
+<!-- Payment Modal with Proper Brand Icons & Original Logos -->
+<div id="paymentModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; justify-content: center; align-items: center; box-sizing: border-box; padding: 10px;">
+    <div style="background: #121212; padding: 25px; border-radius: 14px; width: 92%; max-width: 420px; box-sizing: border-box; text-align: center; border: 1px solid #00e5ff; box-shadow: 0 8px 30px rgba(0,229,255,0.2); margin: 0 auto;">
+        
+        <h3 style="color: #ffffff; margin-top: 0; font-size: 18px; font-weight: 600;">CineBites Secure Checkout</h3>
+        <p style="color: #999; font-size: 12px; margin-bottom: 15px;">100% Secure & Encrypted Payment Gateway</p>
+        
+        <!-- Total Amount Display Box inside Payment Modal -->
+        <div style="background: #1e1e1e; padding: 12px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #333; box-sizing: border-box;">
+            <span style="color: #aaa; font-size: 13px;">Total Amount to Pay:</span>
+            <div id="payModalAmount" style="color: #00ff88; font-size: 24px; font-weight: bold; margin-top: 4px;">₹ 0</div>
+        </div>
+
+        <p style="color: #00e5ff; font-size: 13px; font-weight: 500; margin-bottom: 10px; text-align: left;">Select Payment Option:</p>
+   <!-- Payment Options Container -->
+        <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
+            
+            <!-- Google Pay -->
+            <button onclick="payViaUPI('gpay')" style="background: #1a1a1a; color: #fff; border: 1px solid #333; padding: 12px 15px; border-radius: 8px; font-weight: 500; cursor: pointer; font-size: 14px; display: flex; align-items: center; justify-content: space-between;" onmouseover="this.style.borderColor='#4285F4'" onmouseout="this.style.borderColor='#333'">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div style="width: 28px; height: 28px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.3);">
+                        <svg width="16" height="16" viewBox="0 0 24 24">
+                            <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
+                            <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.13 0-5.78-2.11-6.73-4.96H1.18v3.14C3.15 21.32 7.22 24 12 24z"/>
+                            <path fill="#FBBC05" d="M5.27 14.24c-.25-.72-.38-1.49-.38-2.24s.13-1.52.38-2.24V6.62H1.18C.43 8.13 0 9.87 0 12s.43 3.87 1.18 5.38l4.09-3.14z"/>
+                            <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.22 0 3.15 2.68 1.18 6.62l4.09 3.14c.95-2.85 3.6-4.96 6.73-4.96z"/>
+                        </svg>
+                    </div>
+                    <span style="font-weight: 600;">Google Pay (GPay)</span>
+                </div>
+                <span style="color: #4285F4; font-size: 12px;">Pay Instant &rarr;</span>
+            </button>
+
+            <!-- PhonePe -->
+            <button onclick="payViaUPI('phonepe')" style="background: #1a1a1a; color: #fff; border: 1px solid #333; padding: 12px 15px; border-radius: 8px; font-weight: 500; cursor: pointer; font-size: 14px; display: flex; align-items: center; justify-content: space-between;" onmouseover="this.style.borderColor='#5f259f'" onmouseout="this.style.borderColor='#333'">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div style="width: 28px; height: 28px; background: #5f259f; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.3);">
+                        <span style="color: #fff; font-weight: bold; font-size: 12px; font-style: italic;">Pe</span>
+                    </div>
+                    <span style="font-weight: 600;">PhonePe</span>
+                </div>
+                <span style="color: #5f259f; font-size: 12px;">Pay Instant &rarr;</span>
+            </button>
+
+            <!-- Paytm -->
+            <button onclick="payViaUPI('paytm')" style="background: #1a1a1a; color: #fff; border: 1px solid #333; padding: 12px 15px; border-radius: 8px; font-weight: 500; cursor: pointer; font-size: 14px; display: flex; align-items: center; justify-content: space-between;" onmouseover="this.style.borderColor='#00b9f1'" onmouseout="this.style.borderColor='#333'">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div style="width: 28px; height: 28px; background: #00b9f1; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.3);">
+                        <span style="color: #fff; font-weight: 900; font-size: 8px;">Paytm</span>
+                    </div>
+                    <span style="font-weight: 600;">Paytm UPI</span>
+                </div>
+                <span style="color: #00b9f1; font-size: 12px;">Pay Instant &rarr;</span>
+            </button>
+
+            <!-- Cards (Credit / Debit) -->
+            <button onclick="payViaUPI('card')" style="background: #1a1a1a; color: #fff; border: 1px solid #333; padding: 12px 15px; border-radius: 8px; font-weight: 500; cursor: pointer; font-size: 14px; display: flex; align-items: center; justify-content: space-between;" onmouseover="this.style.borderColor='#ffaa00'" onmouseout="this.style.borderColor='#333'">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div style="width: 28px; height: 28px; background: #2a2a2a; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.3); border: 1px solid #444;">
+                        <span style="font-size: 14px;">💳</span>
+                    </div>
+                    <span style="font-weight: 600;">Credit / Debit Card</span>
+                </div>
+                <span style="color: #ffaa00; font-size: 12px;">Secure &rarr;</span>
+            </button>
+
+        </div>
+
+        <button onclick="closePaymentModal()" style="background: transparent; color: #ff4d4d; border: 1px solid #ff4d4d; width: 100%; padding: 10px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 500;">Cancel Transaction</button>
+    </div>
+</div>
+
+<!-- Success Order Confirmation Modal -->
+<div id="successOrderModal" class="success-modal-overlay" style="display: none;">
+    <div class="success-modal-content">
+        <div class="success-header">
+            <h2>🍿 Thank You, CineBites!</h2>
+            <p>Your In-Seat F&B Order is Confirmed</p>
+        </div>
+
+        <!-- Dynamic Meta Info (Order ID & Current Time) -->
+        <div class="order-meta-info">
+            <span><strong>Order ID:</strong> <span id="modalOrderId">-</span></span>
+            <span><strong>Time:</strong> <span id="modalOrderTime">-</span></span>
+        </div>
+
+        <!-- Dynamic Cart Items & Summary Details passed from Order Summary -->
+        <div class="success-items-list" id="successItemsList">
+            
+        </div>
+
+        <div class="success-total-section">
+            <h3>Total Paid: <span id="successModalTotal">₹ 0</span></h3>
+            <p class="bill-note">⏱️ Food will reach you within 15-20 minutes.<br>* Not a tax invoice, for cinema in-seat delivery only.</p>
+        </div>
+
+        <!-- Action Buttons (Only Save Receipt & Close) -->
+        <div class="success-action-buttons">
+            <button type="button" class="btn-save-receipt" onclick="saveReceiptImage()" style="width: 100%;">📥 Save Receipt</button>
+        </div>
+
+        <button type="button" class="btn-close-success" onclick="closeAndResetModal()">Close & Enjoy Movie</button>
+    </div>
+</div>
+</body>
+</html>
